@@ -66,47 +66,11 @@ button{
 #passwordToggle{
     color: white !important;
     margin-top: -40px !important;
-    margin-right: -600px !important;
+    margin-right: -500px !important;
      margin-bottom: 20px;
      cursor: pointer; 
 }
-@media all and (max-width: 1200px)and(min-width:1000px){
-    #passwordToggle{
-        color: white !important;
-        margin-top: -40px !important;
-        margin-right: -200px !important;
-         margin-bottom: 20px;
-         cursor: pointer; 
-    }
-}
-@media all and (max-width: 1000px)and(min-width:850){
-    #passwordToggle{
-        color: white !important;
-        margin-top: -40px !important;
-        margin-right: -350px !important;
-         margin-bottom: 20px;
-         cursor: pointer; 
-    }
-}
 
-@media all and (max-width: 850px){
-    #passwordToggle{
-        color: white !important;
-        margin-top: -40px !important;
-        margin-right: -300px !important;
-         margin-bottom: 20px;
-         cursor: pointer; 
-    }
-}
-@media all and (max-width:1000px){
-    #passwordToggle{
-        color: white !important;
-        margin-top: -40px !important;
-        margin-right: -200px !important;
-         margin-bottom: 20px;
-         cursor: pointer; 
-    }
-}
 .logout{
     background-color: #24353f;
     text-align: center;

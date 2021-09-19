@@ -28,9 +28,6 @@ function signupAdd(){
         if(emailInputLogin==signupArr[i].userEmail){
             check++;
         }}
-        console.log(namevalidation());
-        console.log(emailvalidation());
-        console.log(passwordvalidation());
         if(namevalidation()&&emailvalidation()&&passwordvalidation()&&check==0){
         var user={
             userName:nameInputSignup.value,
@@ -40,16 +37,21 @@ function signupAdd(){
         signupArr.push(user);
         localStorage.setItem("signupArr",JSON.stringify(signupArr));
         signupClear();
+        signerror.classList.remove("d-none");
+        signerror.innerHTML="Success";
+        signerror.classList.replace("text-danger","text-success");
     }
     else if(nameInputSignup.value==""||emailInputSignup.value==""||passwordSignup.value==""){
         signerror.classList.remove("d-none");
+        signerror.innerHTML="All Input Is Required";
+        signerror.classList.replace("text-success","text-danger");
     }else if(check!=0){
         signerror.classList.remove("d-none");
         signerror.innerHTML="this email is already exist";
+        signerror.classList.replace("text-success","text-danger");
     }
 }
-if(login||welcomeName){
-var index=0;}
+
 
 function loginhager(){
     for( var i=0; i<signupArr.length; i++){
@@ -58,8 +60,8 @@ function loginhager(){
             reqire.innerHTML="All input Is required";
         }
         else if(emailInputLogin.value==signupArr[i].userEmail&&passwordLogin.value==signupArr[i].userPassword){
-                index=i;
-            
+               var index=i;
+            localStorage.setItem('index',index);
             login.setAttribute("href","home.html"); 
         break;
        
@@ -82,7 +84,7 @@ function signupClear(){
 
 
 function namevalidation(){
-        var rgex=/[a-z0-9 ]{3,20}$/;
+        var rgex=/[a-zA-Z0-9 ]{3,20}$/;
         var isMatch=rgex.test(nameInputSignup.value);
         if (isMatch){
             return true;
@@ -91,7 +93,7 @@ function namevalidation(){
         }
 }
 function emailvalidation(){
-    var rgex=/[a-z0-9 ](@){1}[a-z0-9 ](.){1}[a-z]/;
+    var rgex=/[a-zA-Z0-9 ](@){1}[a-z0-9 ](.){1}[a-z]/;
     var isMatch=rgex.test(emailInputSignup.value);
     if (isMatch){
         return true;
@@ -102,7 +104,7 @@ function emailvalidation(){
 }
 
 function passwordvalidation(){
-    var rgex=/[a-z0-9 @#$%^&*]{8,20}/;
+    var rgex=/[a-zA-Z0-9 @#$%^&*]{8,20}/;
     var isMatch=rgex.test(passwordSignup.value);
     if (isMatch){
         return true;
@@ -135,8 +137,12 @@ if(passwordLogin.getAttribute("type")=="password"){
 // toggle the eye / eye slash icon
 this.classList.toggle('bi-eye');
 });}
+var logout=document.getElementById("logout");
+if(logout){
+//    window.location.pathname="index.html";
+}
 
-// if(welcomeName){
-//     welcomeName.innerHTML=`welcome ${signupArr[index].userName}`;
-// }
-
+if(welcomeName){
+     var index=localStorage.getItem("index");
+    welcomeName.innerHTML=`welcome ${signupArr[index].userName}`;
+}
